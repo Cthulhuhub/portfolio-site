@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <HeaderAni />
+    <div class="head-wrapper">
+      <HeaderAni />
+    </div>
+    <div class="carousel-wrapper">
+      <LogoCarousel />
+    </div>
   </div>
 </template>
 
 <script>
 import HeaderAni from './components/TopAni.vue'
+import LogoCarousel from './components/LogoCarousel.vue'
 export default {
   name: 'App',
   components: {
-    HeaderAni
+    HeaderAni,
+    LogoCarousel
   }
 }
 </script>
@@ -17,5 +24,6 @@ export default {
 <style>
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 </style>
