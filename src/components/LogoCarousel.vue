@@ -50,7 +50,8 @@ export default {
                 let spriteContainer = new PIXI.Container()
 
                 if (isMobile) {
-                    container.x = 50 * 1
+                    container.x = 50 * i
+                    container.scale(0.5)
                 } else {
                     container.x = (parent.clientWidth / state.sprites.length)*i
                 }
