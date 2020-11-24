@@ -10,6 +10,7 @@
   "dependencies": {
     "@pixi/filter-shockwave": "^3.1.1",
     "core-js": "^3.6.5",
+    "mobile-device-detect": "^0.4.3",
     "pixi.js": "^5.3.3",
     "vue": "^3.0.0"
   },
