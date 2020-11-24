@@ -5,63 +5,64 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue'
+import { onMounted, reactive, onBeforeMount } from 'vue'
 import * as PIXI from 'pixi.js'
+import {ShockwaveFilter} from '@pixi/filter-shockwave';
 export default {
     name: 'HeaderAni',
     setup() {
         const state = reactive({
-            app: {},
-            displacer: {},
-            ticker: {}
+            app: new PIXI.Application(),
+            ticker: {},
+            orion: {},
+            portrait: {}
+        })
+
+        function loadAssets() {
+            state.orion = new PIXI.Sprite.from(require('../assets/universe.jpg'))
+            state.portrait = new PIXI.Sprite.from(require('../assets/portrait.png'))
+            state.app.stage.addChild(state.portrait)
+            state.app.stage.addChild(state.orion)
+        }
+
+        onBeforeMount(() => {
+            loadAssets()
         })
 
         function initPixi() {
-            state.app = new PIXI.Application()
             document.getElementById("header-ani-container").appendChild(state.app.view)
             const parent = state.app.view.parentNode;
             state.app.interactive = true
+            const container = new PIXI.Container()
 
+            const background = state.orion
+
+            container.addChild(state.portrait)
+            state.app.stage.addChild(container)
             state.app.renderer.resize(parent.clientWidth, parent.clientHeight)
 
-            const img = require('../assets/orion.jpg')
-            const background = new PIXI.Sprite.from(img)
+            state.portrait.width = 450
+            state.portrait.height = 400
+            state.portrait.x = parent.clientWidth / 2.75
+            state.portrait.y = parent.clientHeight / 6
+
             background.width = parent.clientWidth
             background.height = parent.clientHeight
-            state.app.stage.addChild(background)
 
-            const portrait = require('../assets/portrait.png')
-            const portSprite = new PIXI.Sprite.from(portrait)
-            portSprite.width = portSprite.width / 2.5
-            portSprite.height = portSprite.height  / 2.5
-            portSprite.x = parent.clientWidth / 2 - portSprite.width / 2
-            portSprite.y = parent.clientHeight / 2 - portSprite.height / 2
-            state.app.stage.addChild(portSprite)
+            const wave = new ShockwaveFilter()
 
-            const displacer = require('../assets/ripple.jpg')
-            state.displacer = new PIXI.Sprite.from(displacer)
-            let displacementFilter = new PIXI.filters.DisplacementFilter(state.displacer)
-            state.app.stage.addChild(state.displacer)
-            state.app.stage.filters = [displacementFilter]
 
-            state.app.view.style.transform = 'scale(1.02)'
-
-            state.displacer.scale.x = 1
-            state.displacer.scale.y = 1
+            container.filters = [wave]
 
             state.ticker = PIXI.Ticker.shared
             state.ticker.autoStart = true
 
             state.ticker.add(() => {
-                let mousePos = getMouse()
-                state.displacer.x = mousePos.x - (state.displacer.width / 2)
-                state.displacer.y = mousePos.y - (state.displacer.height / 2)
+                wave.center = [container.width/2, container.height/2]
+                wave.time = (wave.time >= 1 ) ? 0 : wave.time + 0.0017;
+                wave.wavelength = 25
+                wave.speed = 900
             })
-        }
-
-
-        function getMouse() {
-            return state.app.renderer.plugins.interaction.mouse.global
         }
 
         onMounted(() => {

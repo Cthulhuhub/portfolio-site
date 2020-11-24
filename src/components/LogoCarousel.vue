@@ -16,9 +16,10 @@ export default {
                 require('../assets/codeLogos/flask.png'),
                 require('../assets/codeLogos/html.png'),
                 require('../assets/codeLogos/css.png'),
-                require('../assets/codeLogos/vue.png')
+                require('../assets/codeLogos/vue.png'),
+                require('../assets/codeLogos/postgresql.png')
             ],
-            app: {},
+            app2: {},
             sprites: [],
             containers: [],
             ticker: {},
@@ -30,14 +31,14 @@ export default {
         })
 
         function initPixi() {
-            state.app = new PIXI.Application({
+            state.app2 = new PIXI.Application({
                 backgroundColor: 0xFFFFFF
             })
-            document.getElementById("logo-carousel-container").appendChild(state.app.view)
+            document.getElementById("logo-carousel-container").appendChild(state.app2.view)
 
-            const parent = state.app.view.parentNode;
+            const parent = state.app2.view.parentNode;
 
-            state.app.renderer.resize(parent.clientWidth, parent.clientHeight)
+            state.app2.renderer.resize(parent.clientWidth, parent.clientHeight)
 
             state.logos.forEach(logo => {
                 state.sprites.push(new PIXI.Sprite.from(logo))
@@ -51,11 +52,11 @@ export default {
 
                 spriteContainer.addChild(sprite)
                 container.addChild(spriteContainer)
-                state.app.stage.addChild(container)
+                state.app2.stage.addChild(container)
                 state.containers.push(container)
             })
 
-            state.app.view.style.transform = 'scale(1.02, 1)'
+            state.app2.view.style.transform = 'scale(1.02, 1)'
             state.ticker = PIXI.Ticker.shared
             state.ticker.autostart = true;
 
@@ -65,7 +66,7 @@ export default {
                 state.containers.forEach(container => {
                     container.x = calcPosition(state.moveRate, container.position.x, parent.clientWidth, container.width)
                 })
-                state.filter.scale.x = state.moveRate * 0.75 * -1
+                state.filter.scale.x = state.moveRate * 1.75 * -1
             })
         }
 
@@ -83,15 +84,15 @@ export default {
 
         function addFilter() {
             state.displacer = new PIXI.Sprite.from(require('../assets/radiantdisplacer.png'))
-            state.app.stage.addChild(state.displacer)
-            state.displacer.width =  state.app.screen.width
-            state.displacer.height =  state.app.screen.height
-            state.displacer.x = (state.app.screen.width / 2) - (state.displacer.width / 2)
-            state.displacer.y = (state.app.screen.height / 2)  - (state.displacer.height / 1.3)
+            state.app2.stage.addChild(state.displacer)
+            state.displacer.width =  state.app2.screen.width
+            state.displacer.height =  state.app2.screen.height
+            state.displacer.x = (state.app2.screen.width / 2) - (state.displacer.width / 2)
+            state.displacer.y = (state.app2.screen.height / 2)  - (state.displacer.height / 1.3)
 
             state.filter = new PIXI.filters.DisplacementFilter(state.displacer)
             state.filter.scale.set(0)
-            state.app.stage.filters = [state.filter]
+            state.app2.stage.filters = [state.filter]
         }
 
         scrollEvent()
