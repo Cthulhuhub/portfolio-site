@@ -4,7 +4,6 @@
 
 <script>
 import { onMounted, reactive } from 'vue'
-import { isMobile } from 'mobile-device-detect'
 import * as PIXI from 'pixi.js'
 export default {
     name: "LogoCarousel",
@@ -49,12 +48,7 @@ export default {
                 let container = new PIXI.Container()
                 let spriteContainer = new PIXI.Container()
 
-                if (isMobile) {
-                    container.x = 50 * i
-                    container.scale(0.5)
-                } else {
-                    container.x = (parent.clientWidth / state.sprites.length)*i
-                }
+                container.x = (parent.clientWidth / state.sprites.length)*i
 
                 spriteContainer.addChild(sprite)
                 container.addChild(spriteContainer)
