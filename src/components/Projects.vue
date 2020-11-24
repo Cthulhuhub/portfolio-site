@@ -76,7 +76,9 @@ export default {
                 if (entries[0].intersectionRatio <= 0) return;
 
                 entries.forEach(entry => {
-                    state.projects[entry.target.id - 1].visible = true
+                    if (entry.intersectionRatio*10 > 0.1) {
+                        state.projects[entry.target.id - 1].visible = true
+                    }
                 })
             }, { threshold: 0.8 })
 
@@ -161,7 +163,7 @@ export default {
 }
 
 .project-card {
-    margin-top: 10px;
+    margin: 30px;
 }
 
 .observer-wrapper {

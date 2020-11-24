@@ -72,7 +72,11 @@ export default {
 
         function scrollEvent() {
             document.addEventListener('wheel', e => {
-                state.moveRate += e.deltaY / 5
+                if (e.deltaY > 0) {
+                    state.moveRate += 0.75
+                } else if (e.deltaY < 0) {
+                    state.moveRate -= 0.75
+                }
             })
         }
 
