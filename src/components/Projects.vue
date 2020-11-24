@@ -13,7 +13,7 @@
                             <span>{{ project.description }}</span>
                         </div>
                         <div class="project-links">
-                            <span><a :href="project.repo">Github</a> <span v-if="project.site">|</span> <a v-if="project.site" :href="project.site">Site</a></span>
+                            <span><a :href="project.repo" target="_blank">Github</a> <span v-if="project.site">|</span> <a v-if="project.site" :href="project.site" target="_blank">Site</a></span>
                         </div>
                     </div>
                 </div>
@@ -32,7 +32,7 @@ export default {
             projects: [
                 {
                     name: "Sprint Turf",
-                    description: "A clone of Remember the Milk that's adapted to sprint team managment. Has live updating components using pure JavaScript, and styled almost entirely with vanilla CSS.",
+                    description: "A clone of Remember the Milk that's adapted to the idea of sprint team managment. Has live updating components using pure JavaScript, and styled almost entirely with vanilla CSS.",
                     repo: "https://github.com/anassri/sprint-turf-project",
                     site: "https://sprint-turf.herokuapp.com/",
                     visible: false,
@@ -41,7 +41,7 @@ export default {
                 },
                 {
                     name: "All A Bot",
-                    description: "Uses forms to create JSON objects which are then used to generate simple Discord bots, all on the front end. Bot tokens are never sent across the network to ensure security.",
+                    description: "Uses forms to create JSON objects which are then used to generate simple Discord bots, all on the front end. Bot tokens are never sent across the network to ensure security. Built using React, Flask, and Material UI.",
                     repo: "https://github.com/anassri/All-A-Bot",
                     site: "http://all-a-bot.herokuapp.com/",
                     visible: false,
@@ -50,7 +50,7 @@ export default {
                 },
                 {
                     name: "Battle Blog",
-                    description: "A microblogging site that allows users to have multiple characters, through which they browse the app.",
+                    description: "A microblogging site that allows users to have multiple characters, through which they browse the app. Developed with React, Flask, and vanilla CSS.",
                     repo: "https://github.com/Cthulhuhub/battle-blog",
                     site: "https://battle-blog.herokuapp.com/",
                     visible: false,
@@ -58,8 +58,8 @@ export default {
                     side: 'left'
                 },
                 {
-                    name: "Zoom Cord",
-                    description: "A Discord bot designed around the App Academy remote program's class structure, making it possible to use Discord over Zoom and Slack",
+                    name: "Zoom-cord",
+                    description: "A Discord bot designed around the App Academy remote program's class structure, making it theoretically possible to use Discord over Zoom and Slack. Made with discord.js.",
                     repo: "https://github.com/Cthulhuhub/zoom-cord",
                     site: '',
                     visible: false,
@@ -76,11 +76,9 @@ export default {
                 if (entries[0].intersectionRatio <= 0) return;
 
                 entries.forEach(entry => {
-                    if (entry.intersectionRatio > 0) {
-                        state.projects[entry.target.id - 1].visible = true
-                    }
+                    state.projects[entry.target.id - 1].visible = true
                 })
-            })
+            }, { threshold: 0.8 })
 
             projectBoxes.forEach(project => {
                 observer.observe(project)
@@ -96,7 +94,7 @@ export default {
 
 <style scoped>
 .projects-container {
-    padding-bottom: 50px;
+    padding-bottom: 75px;
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -105,6 +103,7 @@ export default {
 }
 
 .visibility-wrapper {
+    transition: all 1s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -112,10 +111,9 @@ export default {
 }
 
 .visibility-wrapper:hover {
-    transition: all 1s ease;
     transform: scale(1.2, 1.2);
     background-color: white;
-    color: black;
+    color: rgb(48, 48, 48);
 }
 
 .project-name {
@@ -158,8 +156,12 @@ export default {
 }
 
 .content-wrapper {
-    max-width: 33%;
+    max-width: 50%;
     margin: 10px;
+}
+
+.project-card {
+    margin-top: 10px;
 }
 
 .observer-wrapper {
