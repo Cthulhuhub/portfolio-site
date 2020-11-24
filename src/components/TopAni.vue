@@ -43,8 +43,8 @@ export default {
 
             state.portrait.width = 450
             state.portrait.height = 400
-            state.portrait.x = parent.clientWidth / 2.75
-            state.portrait.y = parent.clientHeight / 6
+            state.portrait.x = (parent.clientWidth - state.portrait.width) / 2
+            state.portrait.y = (parent.clientHeight - state.portrait.height) / 2
 
             background.width = parent.clientWidth
             background.height = parent.clientHeight
