@@ -76,7 +76,7 @@ export default {
                 if (entries[0].intersectionRatio <= 0) return;
 
                 entries.forEach(entry => {
-                    if (entry.intersectionRatio*10 > 0.1) {
+                    if (entry.intersectionRatio*10 > 0.2) {
                         state.projects[entry.target.id - 1].visible = true
                     }
                 })

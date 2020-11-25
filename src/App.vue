@@ -6,14 +6,16 @@
     <div class="carousel-wrapper">
       <LogoCarousel />
     </div>
-    <div class="projects-wrapper">
-      <Projects />
-    </div>
-    <div class="project-images-wrapper">
-      <ProjectImages />
-    </div>
-    <div class="footer-container">
-      <Footer />
+    <div class="body-cont">
+      <div class="projects-wrapper">
+        <Projects />
+      </div>
+      <div class="project-images-wrapper">
+        <ProjectImages />
+      </div>
+      <div class="footer-container">
+        <Footer />
+      </div>
     </div>
   </div>
 </template>
@@ -53,5 +55,11 @@ body {
 
 .projects-wrapper {
   text-align: center;
+}
+
+.body-cont {
+  position: absolute;
+  top: 76%;
+  width: 100%;
 }
 </style>
