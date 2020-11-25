@@ -23,7 +23,7 @@ export default {
             sprites: [],
             containers: [],
             ticker: {},
-            moveRate: 1.5,
+            moveRate: 2,
             scroll: 0,
             displacer: {},
             filter: {},
@@ -66,11 +66,11 @@ export default {
                 state.containers.forEach(container => {
                     container.x = calcPosition(state.moveRate, container.position.x, parent.clientWidth, container.width)
                 })
-                state.filter.scale.x = state.moveRate * 1.75 * -1
-                if (state.moveRate > 1.5) {
-                    state.moveRate -= 0.075
-                } else if (state.moveRate < 1.5) {
-                    state.moveRate += 0.075
+                state.filter.scale.x = state.moveRate * 2.5 * -1
+                if (state.moveRate > 2 || state.moveRate < -2) {
+                    state.moveRate = state.moveRate / 1.0099
+                } else if (state.moveRate >= -2 && state.moveRate < 2) {
+                    state.moveRate += 0.09
                 }
             })
         }
