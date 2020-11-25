@@ -8,6 +8,7 @@
 import { onMounted, reactive, onBeforeMount } from 'vue'
 import * as PIXI from 'pixi.js'
 import {ShockwaveFilter} from '@pixi/filter-shockwave';
+// import { isMobile } from 'mobile-device-detect'
 export default {
     name: 'HeaderAni',
     setup() {
@@ -51,7 +52,6 @@ export default {
 
             const wave = new ShockwaveFilter()
 
-
             container.filters = [wave]
 
             state.ticker = PIXI.Ticker.shared
@@ -75,5 +75,6 @@ export default {
 <style scoped>
 #headeer-ani-container {
     width: 100%;
+    overflow: hidden;
 }
 </style>

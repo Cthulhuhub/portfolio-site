@@ -150,4 +150,18 @@ export default {
     opacity: 0;
     transform: scale(0.7, 0.7)
 }
+
+@media only screen and (max-width: 600px) {
+    .proj {
+        font-size: 50%;
+    }
+
+    .projects h2 {
+        margin-left: 10px;
+    }
+
+    .images {
+        height: auto;
+    }
+}
 </style>

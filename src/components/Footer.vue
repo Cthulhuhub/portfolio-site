@@ -84,4 +84,20 @@ export default {
     color: rgb(221, 221, 221);
     text-decoration: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .logos {
+        width: 50px;
+        height: 50px;
+    }
+
+    .vue-logo {
+        width: 35px;
+        height: 35px;
+    }
+
+    .footer {
+        font-size: 75%;
+    }
+}
 </style>

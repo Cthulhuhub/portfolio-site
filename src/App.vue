@@ -4,7 +4,8 @@
       <HeaderAni />
     </div>
     <div class="carousel-wrapper">
-      <LogoCarousel />
+      <LogoCarousel v-if="!isMobile" />
+      <MobileCarousel v-else-if="isMobile" />
     </div>
     <div class="body-cont">
       <div class="projects-wrapper">
@@ -26,6 +27,8 @@ import LogoCarousel from './components/LogoCarousel.vue'
 import Projects from './components/Projects.vue'
 import ProjectImages from './components/ProjectImages.vue'
 import Footer from './components/Footer.vue'
+import MobileCarousel from './components/MobileCarousel.vue'
+import { isMobile } from 'mobile-device-detect'
 export default {
   name: 'App',
   components: {
@@ -33,7 +36,11 @@ export default {
     LogoCarousel,
     Projects,
     ProjectImages,
-    Footer
+    Footer,
+    MobileCarousel
+  },
+  setup() {
+    return { isMobile }
   }
 }
 </script>
@@ -44,6 +51,10 @@ body {
   margin: 0;
   overflow-x: hidden;
   font-family: 'Raleway', sans-serif;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 .projects-wrapper {
@@ -61,5 +72,9 @@ body {
   position: absolute;
   top: 76%;
   width: 100%;
+}
+
+button {
+  display: none;
 }
 </style>

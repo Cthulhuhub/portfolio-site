@@ -170,4 +170,11 @@ export default {
     height: 100px;
     width: 100%;
 }
+
+@media only screen and (max-width: 600px) {
+    .content-wrapper {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
 </style>
