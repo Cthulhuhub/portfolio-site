@@ -23,7 +23,7 @@ export default {
             sprites: [],
             containers: [],
             ticker: {},
-            moveRate: 0.75,
+            moveRate: 1.5,
             scroll: 0,
             displacer: {},
             filter: {},
@@ -67,6 +67,11 @@ export default {
                     container.x = calcPosition(state.moveRate, container.position.x, parent.clientWidth, container.width)
                 })
                 state.filter.scale.x = state.moveRate * 1.75 * -1
+                if (state.moveRate > 1.5) {
+                    state.moveRate -= 0.075
+                } else if (state.moveRate < 1.5) {
+                    state.moveRate += 0.075
+                }
             })
         }
 
