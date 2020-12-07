@@ -8,12 +8,13 @@
       <MobileCarousel v-else-if="isMobile" />
     </div>
     <div class="body-cont">
-      <div class="projects-wrapper">
+      <ProjectsV2 />
+      <!-- <div class="projects-wrapper">
         <Projects />
       </div>
       <div class="project-images-wrapper">
         <ProjectImages />
-      </div>
+      </div> -->
       <div class="footer-container">
         <Footer />
       </div>
@@ -24,8 +25,9 @@
 <script>
 import HeaderAni from './components/TopAni.vue'
 import LogoCarousel from './components/LogoCarousel.vue'
-import Projects from './components/Projects.vue'
-import ProjectImages from './components/ProjectImages.vue'
+// import Projects from './components/Projects.vue'
+// import ProjectImages from './components/ProjectImages.vue'
+import ProjectsV2 from './components/ProjectsV2'
 import Footer from './components/Footer.vue'
 import MobileCarousel from './components/MobileCarousel.vue'
 import { isMobile } from 'mobile-device-detect'
@@ -34,8 +36,9 @@ export default {
   components: {
     HeaderAni,
     LogoCarousel,
-    Projects,
-    ProjectImages,
+    // Projects,
+    // ProjectImages,
+    ProjectsV2,
     Footer,
     MobileCarousel
   },
@@ -68,11 +71,11 @@ html {
   text-align: center;
 }
 
-.body-cont {
+/* .body-cont {
   position: absolute;
   top: 76%;
   width: 100%;
-}
+} */
 
 button {
   display: none;
