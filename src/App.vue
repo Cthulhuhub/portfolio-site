@@ -8,13 +8,15 @@
       <MobileCarousel v-else-if="isMobile" />
     </div>
     <div class="body-cont">
-      <ProjectsV2 />
-      <!-- <div class="projects-wrapper">
-        <Projects />
+      <ProjectsV2 v-if="!isMobile" />
+      <div v-else-if="isMobile">
+        <div class="projects-wrapper">
+          <Projects />
+        </div>
+        <div class="project-images-wrapper">
+          <ProjectImages />
+        </div>
       </div>
-      <div class="project-images-wrapper">
-        <ProjectImages />
-      </div> -->
       <div class="footer-container">
         <Footer />
       </div>
@@ -25,8 +27,8 @@
 <script>
 import HeaderAni from './components/TopAni.vue'
 import LogoCarousel from './components/LogoCarousel.vue'
-// import Projects from './components/Projects.vue'
-// import ProjectImages from './components/ProjectImages.vue'
+import Projects from './components/Projects.vue'
+import ProjectImages from './components/ProjectImages.vue'
 import ProjectsV2 from './components/ProjectsV2'
 import Footer from './components/Footer.vue'
 import MobileCarousel from './components/MobileCarousel.vue'
@@ -36,8 +38,8 @@ export default {
   components: {
     HeaderAni,
     LogoCarousel,
-    // Projects,
-    // ProjectImages,
+    Projects,
+    ProjectImages,
     ProjectsV2,
     Footer,
     MobileCarousel

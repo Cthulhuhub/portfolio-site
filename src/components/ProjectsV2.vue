@@ -10,29 +10,54 @@
         <div class="projects-descriptions">
             <transition name="projects">
                 <div v-if="state.active === 1" class="desc-box">
-                    <p class="project-description">
-                        <span class="desc-test">{{state.projects[0].description}}</span>
-                    </p>
+                    <div class="project-description">
+                        <span class="desc-text">{{state.projects[0].description}}</span>
+                        <p class="links">
+                            <span class="links">
+                                <a href="https://github.com/anassri/sprint-turf-project">Github</a> | <a href="https://sprint-turf.herokuapp.com/" target="_blank">Site</a>
+                            </span>
+                        </p>
+                    </div>
                 </div>
                 <div v-else-if="state.active === 2" class="desc-box">
-                    <p class="project-description">
-                        <span class="desc-test">{{state.projects[1].description}}</span>
-                    </p>
+                    <div class="project-description">
+                        <span class="desc-text">{{state.projects[1].description}}</span>
+                        <p class="links">
+                            <span class="links">
+                                <a href="https://github.com/anassri/All-A-Bot">Github</a> | <a href="http://all-a-bot.herokuapp.com/" target="_blank">Site</a>
+                            </span>
+                        </p>
+                    </div>
                 </div>
                 <div v-else-if="state.active === 3" class="desc-box">
-                    <p class="project-description">
-                        <span class="desc-test">{{state.projects[2].description}}</span>
-                    </p>
+                    <div class="project-description">
+                        <span class="desc-text">{{state.projects[2].description}}</span>
+                        <p class="links">
+                            <span class="links">
+                                <a href="https://github.com/Cthulhuhub/battle-blog">Github</a> | <a href="https://battle-blog.herokuapp.com/" target="_blank">Site</a>
+                            </span>
+                        </p>
+                    </div>
                 </div>
                 <div v-else-if="state.active === 4" class="desc-box">
-                    <p class="project-description">
+                    <div class="project-description">
                         <span class="desc-text">{{state.projects[3].description}}</span>
-                    </p>
+                        <p class="links">
+                            <span class="links">
+                                <a href="https://github.com/Cthulhuhub/zoom-cord">Github</a>
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </transition>
         </div>
-        <div class="proejcts-images">
-
+        <div class="projects-images">
+            <transition name="projects">
+                <img v-if="state.active === 1" class="image" :src="require('../assets/projects/sprint-turf.png')" />
+                <img v-else-if="state.active === 2" class="image" :src="require('../assets/projects/all-a-bot.png')" />
+                <img v-else-if="state.active === 3" class="image" :src="require('../assets/projects/battle-blog.png')" />
+                <img v-else-if="state.active === 4" class="image" :src="require('../assets/projects/zoom-cord.png')" />
+            </transition>
         </div>
     </div>
 </template>
@@ -159,5 +184,22 @@ export default {
 .projects-leave-to {
     opacity: 0;
     transform: scale(0.7, 0.7)
+}
+
+/* .image-box {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+} */
+
+.projects-images {
+    display: flex;
+    justify-content: center;
+}
+
+.image {
+    max-width: 65%;
+    max-height: 750px;
+    position: absolute;
 }
 </style>
