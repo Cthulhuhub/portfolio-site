@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div id="mobile-cover" v-if="isMobile"></div>
     <div class="head-wrapper">
       <HeaderAni />
     </div>
@@ -76,5 +77,11 @@ html {
 
 button {
   display: none;
+}
+
+#mobile-cover {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }
 </style>
